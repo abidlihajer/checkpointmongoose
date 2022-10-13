@@ -9,8 +9,8 @@ const userSchema=new mongoose.Schema({
     email:{
         type:String,required:true,unique:true
     },
-    motdepass:{
-        type:String&&Number,required:true,unique:true
+    password:{
+        type:String,required:true,unique:true
     },
     age:Number
 })

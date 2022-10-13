@@ -1,14 +1,15 @@
-const Contact=require('../models/User')
+const User=require('../models/User')
 
 exports.addUser=async(req,res)=>{
-    const {lastname,firstname,email,motdepass,age}=req.body
+    let {lastname,firstname,email,password,age}=req.body
+    age=Number(age)
     try {
         const checkUser=await User.findOne({email})
         if(checkUser){
             return res.send("user is already exists")
         }
-        const user=new User({
-            lastname,firstname,email,motdepass,age
+        const user= new User({
+            lastname,firstname,email,password,age
         })
         await user.save()
         res.status(201).send({msg:"user created",user})
